@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Platform
+  - Background
+  - Enemy
+  - Spawn Position
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 1869183641
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Mines
+    uniqueID: 647347563
+    locked: 0
+  - name: Level
+    uniqueID: 2847779509
+    locked: 0
+  - name: Characters
+    uniqueID: 1202196291
+    locked: 0
+  - name: VFX
+    uniqueID: 2016273385
+    locked: 0
+  - name: Bullets
+    uniqueID: 1936029577
+    locked: 0
