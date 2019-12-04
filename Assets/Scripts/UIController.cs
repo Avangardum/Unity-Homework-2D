@@ -21,7 +21,7 @@ public class UIController : SingletonMonoBehavoiur<UIController>
         _mineCount.text = $"<b>{_playerController.MineCount}</b>";
     }
 
-    private void Awake()
+    private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerController = PlayerController.Instance;

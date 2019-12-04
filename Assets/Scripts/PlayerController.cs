@@ -43,11 +43,13 @@ public class PlayerController : SingletonMonoBehavoiur<PlayerController>
         }
     }
 
-    private bool isGrounded
+    private bool _isGrounded
     {
         get
         {
             var hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, _groundedLayerMask);
+            if (hit.collider == null)
+                return false;
             return hit.distance < _groundedError;
         }
     }
@@ -119,8 +121,8 @@ public class PlayerController : SingletonMonoBehavoiur<PlayerController>
 
     private void Jumping()
     {
-        _animator.SetBool("IsGrounded", isGrounded);
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        _animator.SetBool("IsGrounded", _isGrounded);
+        if (Input.GetButtonDown("Jump") && _isGrounded)
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
         }

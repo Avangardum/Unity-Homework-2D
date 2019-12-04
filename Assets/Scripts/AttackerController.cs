@@ -79,20 +79,12 @@ public class AttackerController : MonoBehaviour
             TurnRight();
         if (transform.position.x > _patrolZoneRightBorder)
             TurnLeft();
-
-        Vector2 movement = Vector2.zero;
-        movement.x = _speed;
-        movement *= Time.fixedDeltaTime;
-        transform.Translate(movement, Space.Self);
-
-        ////Тут я пытался сделать перемещение через изменение скорости, но несмотря на точ, что print показывал, что скорость меняется, по факту враг не двигался(хотя с игроком то же самое работало), я погуглил, сказали, что надо использовать AddForce в режиме ForceMode.VelocityChange, но в 2D нельзя выбирать режимы для AddForce, так что я забил, и сделал перемещение через Transform.Translate, но это костыль, так как тогда его не отбрасывают мины.
-        //float xVelocity = 0;
-        //if (_direction == Direction.Right)
-        //    xVelocity = _speed;
-        //if (_direction == Direction.Left)
-        //    xVelocity = -_speed;
-        //_rigidbody2D.velocity = new Vector2(xVelocity, _rigidbody2D.velocity.y);
-        //print(_rigidbody2D.velocity);
+        float xVelocity = 0;
+        if (_direction == Direction.Right)
+            xVelocity = _speed;
+        if (_direction == Direction.Left)
+            xVelocity = -_speed;
+        _rigidbody2D.velocity = new Vector2(xVelocity, _rigidbody2D.velocity.y);
     }
 
     private void TurnLeft()

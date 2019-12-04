@@ -31,10 +31,7 @@ public class Damagable : MonoBehaviour
     {
         Health -= damage;
         if (Health <= 0)
-        {
-            GameObject.Destroy(gameObject);
-            Death?.Invoke();
-        }
+            Die();
     }
 
     public void Heal(int healAmount)
@@ -42,5 +39,11 @@ public class Damagable : MonoBehaviour
         Health += healAmount;
         if (Health > _maxHealth)
             Health = _maxHealth;
+    }
+
+    public void Die()
+    {
+        GameObject.Destroy(gameObject);
+        Death?.Invoke();
     }
 }

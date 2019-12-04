@@ -40,12 +40,12 @@ public class MineController : MonoBehaviour
         }
         _wasExploded = true;
         GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().Sleep();
         Instantiate(_particleSystemPrefab, _particleSystemSpawningPosition.position, Quaternion.identity);
         AudioSource audioSource = GetComponent<AudioSource>();
         audioSource.Play();
         Destroy(gameObject, audioSource.clip.length);
 
-    }
-
-    
+    }    
 }
