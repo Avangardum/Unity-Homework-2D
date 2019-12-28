@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 [RequireComponent(typeof(Damagable))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -85,9 +86,9 @@ public class PlayerController : SingletonMonoBehavoiur<PlayerController>
 
     private void Moving()
     {
-        bool goRight = Input.GetAxis("Horizontal") == 1;
-        bool goLeft = Input.GetAxis("Horizontal") == -1;
-        bool idle = Input.GetAxis("Horizontal") == 0;
+        bool goRight = CrossPlatformInputManager.GetAxis("Horizontal") == 1;
+        bool goLeft = CrossPlatformInputManager.GetAxis("Horizontal") == -1;
+        bool idle = CrossPlatformInputManager.GetAxis("Horizontal") == 0;
         _animator.SetBool("IsMoving", !idle);
         float xVelocity = _rigidbody2D.velocity.x;
         if (goLeft)
@@ -122,7 +123,7 @@ public class PlayerController : SingletonMonoBehavoiur<PlayerController>
     private void Jumping()
     {
         _animator.SetBool("IsGrounded", _isGrounded);
-        if (Input.GetButtonDown("Jump") && _isGrounded)
+        if (CrossPlatformInputManager.GetButtonDown("Jump") && _isGrounded)
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
         }
@@ -130,7 +131,7 @@ public class PlayerController : SingletonMonoBehavoiur<PlayerController>
 
     private void Shooting()
     {
-        if (Input.GetButton("Fire1") && _currentShootingCooldown == 0)
+        if (CrossPlatformInputManager.GetButton("Fire1") && _currentShootingCooldown == 0)
         {
             Instantiate(_bulletPrefab, _bulletSpawningPoint.position, _bulletSpawningPoint.rotation);
             _currentShootingCooldown = _shootingCooldown;
@@ -150,7 +151,7 @@ public class PlayerController : SingletonMonoBehavoiur<PlayerController>
 
     private void MinePlacement()
     {
-        if (Input.GetButton("Fire2") && MineCount > 0 && _currentMineCooldown == 0)
+        if (CrossPlatformInputManager.GetButton("Fire2") && MineCount > 0 && _currentMineCooldown == 0)
         {
             MineCount--;
             Instantiate(_minePrefab, _mineSpawningPoint.position, Quaternion.identity);

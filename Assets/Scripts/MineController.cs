@@ -41,7 +41,7 @@ public class MineController : MonoBehaviour
         _wasExploded = true;
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().Sleep();
+        GetComponent<Rigidbody2D>().isKinematic = true;
         Instantiate(_particleSystemPrefab, _particleSystemSpawningPosition.position, Quaternion.identity);
         AudioSource audioSource = GetComponent<AudioSource>();
         audioSource.Play();
